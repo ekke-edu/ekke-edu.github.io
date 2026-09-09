@@ -1,97 +1,58 @@
-```markdown
-# EKKE-EDU · Organization Configuration & Documentation
+# EKKE-EDU
 
-🇭🇺 **Magyar** · 🇬🇧 **English**
+**Organization-level documentation and GitHub configuration for EKKE-EDU.**
 
 ---
 
 ## 🇭🇺 Magyar
 
-Ez a repository az **EKKE-EDU GitHub szervezet** szervezeti szintű konfigurációs és dokumentációs fájljait tartalmazza.
+Ez a repository az **EKKE-EDU GitHub szervezet** szervezeti szintű dokumentumait és GitHub-konfigurációs fájljait tartalmazza.
 
-A repository **statikus**, nem tartalmaz futtatható alkalmazást vagy forráskódot. Célja, hogy központi helyet biztosítson az organization működéséhez kapcsolódó dokumentumoknak és GitHub Community Health fájloknak.
+A repository statikus, nem tartalmaz alkalmazáskódot vagy futtatandó szolgáltatást.
 
 ### Tartalom
 
-A repositoryban többek között az alábbi dokumentumok találhatók:
+- Code of Conduct
+- Contributing Guidelines
+- Security Policy
+- Support
+- további szervezeti dokumentációk és konfigurációs fájlok
 
-- **Code of Conduct** – közösségi magatartási irányelvek
-- **Contributing** – közreműködési irányelvek
-- **Security** – biztonsági irányelvek és biztonsági problémák bejelentése
-- **Support** – támogatással és segítségkéréssel kapcsolatos információk
-- további, az organization működését támogató dokumentumok
+Ezeket a dokumentumokat a GitHub az organization repositoryihoz kapcsolódó közösségi és működési irányelvek részeként is felhasználhatja.
 
-A GitHub ezeket a fájlokat organization-szinten alapértelmezett közösségi dokumentumokként is felhasználhatja az adott repositorykban.
+### EKKE-EDU dokumentációs oldal
 
-### Kapcsolódó oldal
+A kurzusok és szakmai dokumentációk központi oldala:
 
-Az EKKE-EDU kurzusok és szakmai dokumentációk központi gyűjteménye:
-
-**https://ekke-edu.github.io/**
-
-### Repository típusa
-
-Ez egy **statikus dokumentációs repository**.
-
-Nincs benne:
-
-- alkalmazáskód,
-- backend,
-- adatbázis,
-- build folyamat,
-- futtatandó szerveralkalmazás.
-
-A repository tartalma elsősorban Markdown formátumú dokumentáció és GitHub organization konfiguráció.
+https://ekke-edu.github.io/
 
 ---
 
 ## 🇬🇧 English
 
-This repository contains the **organization-wide configuration and documentation files** for the **EKKE-EDU GitHub organization**.
+This repository contains **organization-level documentation and GitHub configuration files** for the **EKKE-EDU GitHub organization**.
 
-The repository is **static** and does not contain an executable application or application source code. Its purpose is to provide a central location for organization-level documentation and GitHub Community Health files.
+It is a static repository and does not contain application source code or executable services.
 
 ### Contents
 
-The repository may contain documents such as:
+- Code of Conduct
+- Contributing Guidelines
+- Security Policy
+- Support
+- additional organization documentation and configuration files
 
-- **Code of Conduct** – community standards and expected behavior
-- **Contributing** – contribution guidelines
-- **Security** – security policies and vulnerability reporting
-- **Support** – information about support and assistance
-- additional documentation supporting the operation of the organization
+These documents may be used by GitHub as organization-wide community health and operational guidelines for repositories within the organization.
 
-GitHub can use these files as organization-wide default community health files for repositories within the organization.
+### EKKE-EDU documentation site
 
-### Related site
+The central website for courses and technical documentation:
 
-The central collection of EKKE-EDU courses and technical documentation is available at:
-
-**https://ekke-edu.github.io/**
-
-### Repository type
-
-This is a **static documentation repository**.
-
-It does not contain:
-
-- application source code,
-- backend services,
-- databases,
-- build pipelines,
-- server-side applications.
-
-The repository primarily contains Markdown documentation and GitHub organization-level configuration files.
+https://ekke-edu.github.io/
 
 ---
 
-## EKKE-EDU
-
-**EKKE-EDU**  
-Educational and technical documentation repositories
-
-Maintained by:
+## Maintainer
 
 **Szilvási István Péter**  
 External Lecturer
-```
