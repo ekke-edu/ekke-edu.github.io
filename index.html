@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>EKKE-EDU | Kurzusok és dokumentáció</title>
+    <link rel="icon" href="https://uni-eszterhazy.hu/favicon.ico" type="image/x-icon">
+    <title>Szilvási István Péter | Oktatási és szakmai dokumentáció</title>
 
     <meta name="description"
-        content="Az EKKE-EDU szervezet kurzusaihoz, projektjeihez és szakmai dokumentációihoz kapcsolódó központi tudásbázis.">
+        content="Szilvási István Péter külső óraadói oldala az oktatási és szakmai dokumentációkhoz a EKKE-EDU github szervezet kurzusaihoz.">
 
     <style>
         :root {
@@ -95,6 +95,16 @@
             position: relative;
             z-index: 1;
             max-width: 800px;
+            text-align: center;
+        }
+
+        .header-logo {
+            display: block;
+            position: relative;
+            z-index: 1;
+            width: min(280px, 80%);
+            height: auto;
+            margin: 0 auto 28px;
         }
 
         .organization {
@@ -114,6 +124,21 @@
             text-transform: uppercase;
 
             color: rgba(255, 255, 255, 0.9);
+
+            text-decoration: none;
+
+            transition:
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .organization:hover,
+        .organization:focus-visible {
+            background: white;
+            border-color: white;
+            color: var(--ekke-blue);
+            text-decoration: none;
         }
 
         h1 {
@@ -127,6 +152,8 @@
 
         header p {
             margin: 0;
+            margin-right: auto;
+            margin-left: auto;
 
             max-width: 720px;
 
@@ -223,6 +250,18 @@
 
             font-size: 1.2rem;
             font-weight: 700;
+        }
+
+        .card-code {
+            margin: 0 0 6px;
+
+            color: var(--ekke-blue);
+
+            font-size: 0.75rem;
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .card h3 {
@@ -328,31 +367,31 @@
 
             padding: 30px 0;
 
-            color: var(--text-secondary);
+            color: white;
 
             font-size: 0.9rem;
+            
+            background-color: #3A7F97;
         }
 
         .footer-content {
             display: flex;
 
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
 
             gap: 20px;
+
+            text-align: center;
         }
 
         .footer-name {
-            color: var(--text-primary);
+            color: white;
             font-weight: 600;
         }
 
         .footer-role {
-            margin-top: 3px;
-        }
-
-        .footer-org {
-            text-align: right;
+            display: inline;
         }
 
         /* =========================
@@ -374,12 +413,7 @@
             }
 
             .footer-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-org {
-                text-align: left;
+                white-space: nowrap;
             }
         }
     </style>
@@ -388,21 +422,22 @@
 <body>
 
     <header>
+        <a href="https://uni-eszterhazy.hu/" target="_blank" rel="noopener">
+            <img class="header-logo" src="ekke-logo-feher.png" alt="Eszterházy Károly Katolikus Egyetem">
+        </a>
         <div class="container header-content">
-
-            <div class="organization">
+            <a class="organization" href="https://github.com/ekke-edu" target="_blank" rel="noopener">
                 EKKE-EDU
-            </div>
+            </a>
 
             <h1>
-                Központi referencia<br>
-                és dokumentáció
+                Szervezeti dokumentáció<br>
+                és tudásbázis
             </h1>
 
             <p>
-                Az egyetemi kurzusokhoz, projektekhez és szakmai
-                tevékenységekhez kapcsolódó dokumentációk és
-                tudásbázisok központi gyűjteménye.
+                Az EKKE-EDU kurzusaihoz, projektjeihez és működéséhez
+                kapcsolódó dokumentációk központi gyűjteménye.
             </p>
 
         </div>
@@ -411,107 +446,77 @@
 
     <main>
         <div class="container">
-
-            <!-- =========================
-             KURZUSOK
-             ========================= -->
-
             <section class="section">
-
                 <div class="section-header">
                     <h2>Kurzusok és szakmai dokumentációk</h2>
-
                     <p>
                         A kurzusokhoz kapcsolódó fejlesztési,
                         technológiai és oktatási dokumentációk.
                     </p>
                 </div>
-
-
                 <div class="grid">
-
                     <article class="card">
-
-                        <div class="card-icon">
-                            ☁
-                        </div>
-
-                        <h3>
-                            Felhőalapú számítástechnika
-                        </h3>
-
-                        <p>
-                            Azure portál, Terraform (IaC),
-                            konténerizált fejlesztői környezetek
-                            és CI/CD automatizáció alapjai.
-                        </p>
-
-                        <a href="https://ekke-edu.github.io/cloud-computing/" target="_blank" rel="noopener">
-                            Dokumentáció megnyitása
-                            <span>→</span>
-                        </a>
-
-                    </article>
-
-
-                    <article class="card">
-
-                        <div class="card-icon">
-                            AI
-                        </div>
-
-                        <h3>
-                            Komplex MI alkalmazások fejlesztése
-                        </h3>
-
-                        <p>
-                            FastAPI, RAG architekturális minták,
-                            MongoDB, Neo4j gráfalapú adatok
-                            és MLOps megfigyelhetőség.
-                        </p>
-
-                        <a href="https://ekke-edu.github.io/complex-ai-applications/" target="_blank" rel="noopener">
-                            Dokumentáció megnyitása
-                            <span>→</span>
-                        </a>
-
-                    </article>
-
-
-                    <article class="card">
-
                         <div class="card-icon">
                             DB
                         </div>
-
+                        <div class="card-code">LBT_IM719G2</div>
                         <h3>
                             Adatbázisrendszerek II.
                         </h3>
-
                         <p>
                             Oracle PL/SQL gyakorlatok,
                             Kanto régió adatbázis-kezelése,
                             FastAPI integráció és automatizált tesztek.
                         </p>
-
                         <a href="https://ekke-edu.github.io/advanced-databases-2/" target="_blank" rel="noopener">
                             Dokumentáció megnyitása
                             <span>→</span>
                         </a>
-
                     </article>
-
-
                     <article class="card">
-
+                        <div class="card-icon">
+                            ☁
+                        </div>
+                        <div class="card-code">LBT_PI255G3</div>
+                        <h3>
+                            Felhőalapú számítástechnika
+                        </h3>
+                        <p>
+                            Azure portál, Terraform (IaC),
+                            konténerizált fejlesztői környezetek
+                            és CI/CD automatizáció alapjai.
+                        </p>
+                        <a href="https://ekke-edu.github.io/cloud-computing/" target="_blank" rel="noopener">
+                            Dokumentáció megnyitása
+                            <span>→</span>
+                        </a>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">
+                            AI
+                        </div>
+                        <div class="card-code">LBI_PI109G3</div>
+                        <h3>
+                            Komplex MI alkalmazások fejlesztése
+                        </h3>
+                        <p>
+                            FastAPI, RAG architekturális minták,
+                            MongoDB, Neo4j gráfalapú adatok
+                            és MLOps megfigyelhetőség.
+                        </p>
+                        <a href="https://ekke-edu.github.io/complex-ai-applications/" target="_blank" rel="noopener">
+                            Dokumentáció megnyitása
+                            <span>→</span>
+                        </a>
+                    </article>
+                    <article class="card">
                         <div class="card-icon">
                             ◈
                         </div>
-
+                        <div class="card-code">LBI_PI103G2</div>
                         <h3>
                             Korszerű adatbázisok
                         </h3>
-
                         <p>
                             MongoDB dokumentum-orientált tárolás,
                             aggregációs folyamatok és Neo4j
@@ -522,7 +527,6 @@
                             Dokumentáció megnyitása
                             <span>→</span>
                         </a>
-
                     </article>
 
                 </div>
@@ -598,22 +602,9 @@
 
     <footer>
         <div class="container footer-content">
-
-            <div>
-                <div class="footer-name">
-                    Szilvási István Péter
-                </div>
-
-                <div class="footer-role">
-                    külső óraadó
-                </div>
+            <div class="footer-name">
+                Szilvási István Péter <span class="footer-role">| Külsős oktató, Matematikai és Informatikai Intézet</span>
             </div>
-
-            <div class="footer-org">
-                EKKE-EDU<br>
-                <span>Oktatási és szakmai dokumentáció</span>
-            </div>
-
         </div>
     </footer>
 
