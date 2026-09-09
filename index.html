@@ -1,0 +1,667 @@
+```html
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EKKE-EDU | Kurzusok és dokumentáció</title>
+
+    <meta
+        name="description"
+        content="Az EKKE-EDU szervezet kurzusaihoz, projektjeihez és szakmai dokumentációihoz kapcsolódó központi tudásbázis."
+    >
+
+    <style>
+        :root {
+            --ekke-blue: #003b70;
+            --ekke-blue-dark: #002b52;
+            --ekke-blue-light: #eaf2f9;
+
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+
+            --text-primary: #182230;
+            --text-secondary: #5c6875;
+
+            --border-color: #dce2e8;
+
+            --shadow: 0 4px 16px rgba(0, 43, 82, 0.06);
+            --shadow-hover: 0 10px 30px rgba(0, 43, 82, 0.12);
+
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: var(--bg-color);
+            color: var(--text-primary);
+
+            line-height: 1.6;
+        }
+
+        .container {
+            width: min(1080px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        header {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--ekke-blue-dark),
+                    var(--ekke-blue)
+                );
+
+            color: white;
+            padding: 70px 0 65px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            right: -180px;
+            top: -220px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .organization {
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            padding: 6px 12px;
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 999px;
+
+            font-size: 0.85rem;
+            font-weight: 600;
+
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        h1 {
+            margin: 0 0 16px;
+
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.15;
+
+            letter-spacing: -1px;
+        }
+
+        header p {
+            margin: 0;
+
+            max-width: 720px;
+
+            color: rgba(255, 255, 255, 0.82);
+
+            font-size: 1.1rem;
+        }
+
+        /* =========================
+           MAIN
+           ========================= */
+
+        main {
+            padding: 55px 0 70px;
+        }
+
+        .section {
+            margin-bottom: 55px;
+        }
+
+        .section-header {
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            margin: 0 0 6px;
+
+            font-size: 1.55rem;
+
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            margin: 0;
+
+            color: var(--text-secondary);
+        }
+
+        /* =========================
+           CARDS
+           ========================= */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+
+            padding: 25px;
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+
+            border-color: rgba(0, 59, 112, 0.25);
+
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 10px;
+
+            background: var(--ekke-blue-light);
+
+            color: var(--ekke-blue);
+
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+
+            font-size: 1.2rem;
+
+            color: var(--text-primary);
+        }
+
+        .card p {
+            margin: 0 0 22px;
+
+            color: var(--text-secondary);
+
+            font-size: 0.95rem;
+
+            flex-grow: 1;
+        }
+
+        .card a {
+            color: var(--ekke-blue);
+
+            text-decoration: none;
+
+            font-weight: 650;
+
+            display: inline-flex;
+            align-items: center;
+
+            gap: 7px;
+
+            transition: gap 0.2s ease;
+        }
+
+        .card a:hover {
+            gap: 11px;
+            text-decoration: underline;
+        }
+
+        /* =========================
+           DOCUMENTATION CARDS
+           ========================= */
+
+        .docs-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 14px;
+        }
+
+        .doc-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 17px 19px;
+
+            background: white;
+
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+
+            color: var(--text-primary);
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .doc-link:hover {
+            transform: translateY(-2px);
+
+            border-color: rgba(0, 59, 112, 0.3);
+
+            box-shadow: var(--shadow);
+
+            color: var(--ekke-blue);
+        }
+
+        .doc-link span:last-child {
+            color: var(--ekke-blue);
+            font-size: 1.1rem;
+        }
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            border-top: 1px solid var(--border-color);
+
+            background: #ffffff;
+
+            padding: 30px 0;
+
+            color: var(--text-secondary);
+
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .footer-name {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .footer-role {
+            margin-top: 3px;
+        }
+
+        .footer-org {
+            text-align: right;
+        }
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 650px) {
+
+            .container {
+                width: min(100% - 28px, 1080px);
+            }
+
+            header {
+                padding: 50px 0 45px;
+            }
+
+            main {
+                padding: 40px 0 50px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-org {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container header-content">
+
+        <div class="organization">
+            EKKE-EDU
+        </div>
+
+        <h1>
+            Központi referencia<br>
+            és dokumentáció
+        </h1>
+
+        <p>
+            Az egyetemi kurzusokhoz, projektekhez és szakmai
+            tevékenységekhez kapcsolódó dokumentációk és
+            tudásbázisok központi gyűjteménye.
+        </p>
+
+    </div>
+</header>
+
+
+<main>
+    <div class="container">
+
+        <!-- =========================
+             KURZUSOK
+             ========================= -->
+
+        <section class="section">
+
+            <div class="section-header">
+                <h2>Kurzusok és szakmai dokumentációk</h2>
+
+                <p>
+                    A kurzusokhoz kapcsolódó fejlesztési,
+                    technológiai és oktatási dokumentációk.
+                </p>
+            </div>
+
+
+            <div class="grid">
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ☁
+                    </div>
+
+                    <h3>
+                        Felhőalapú számítástechnika
+                    </h3>
+
+                    <p>
+                        Azure portál, Terraform (IaC),
+                        konténerizált fejlesztői környezetek
+                        és CI/CD automatizáció alapjai.
+                    </p>
+
+                    <a
+                        href="https://ekke-edu.github.io/cloud-computing/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Dokumentáció megnyitása
+                        <span>→</span>
+                    </a>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        AI
+                    </div>
+
+                    <h3>
+                        Komplex MI alkalmazások fejlesztése
+                    </h3>
+
+                    <p>
+                        FastAPI, RAG architekturális minták,
+                        MongoDB, Neo4j gráfalapú adatok
+                        és MLOps megfigyelhetőség.
+                    </p>
+
+                    <a
+                        href="https://ekke-edu.github.io/complex-ai-applications/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Dokumentáció megnyitása
+                        <span>→</span>
+                    </a>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        DB
+                    </div>
+
+                    <h3>
+                        Adatbázisrendszerek II.
+                    </h3>
+
+                    <p>
+                        Oracle PL/SQL gyakorlatok,
+                        Kanto régió adatbázis-kezelése,
+                        FastAPI integráció és automatizált tesztek.
+                    </p>
+
+                    <a
+                        href="https://ekke-edu.github.io/advanced-databases-2/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Dokumentáció megnyitása
+                        <span>→</span>
+                    </a>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ◈
+                    </div>
+
+                    <h3>
+                        Korszerű adatbázisok
+                    </h3>
+
+                    <p>
+                        MongoDB dokumentum-orientált tárolás,
+                        aggregációs folyamatok és Neo4j
+                        Cypher alapú gráfmodellezés.
+                    </p>
+
+                    <a
+                        href="https://ekke-edu.github.io/modern-databases/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Dokumentáció megnyitása
+                        <span>→</span>
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SZERVEZETI DOKUMENTUMOK
+             ========================= -->
+
+        <section class="section">
+
+            <div class="section-header">
+                <h2>Szervezeti dokumentumok</h2>
+
+                <p>
+                    Az EKKE-EDU GitHub szervezet működéséhez
+                    és együttműködéséhez kapcsolódó irányelvek.
+                </p>
+            </div>
+
+
+            <div class="docs-grid">
+
+                <a
+                    class="doc-link"
+                    href="https://github.com/ekke-edu/.github/blob/main/README.md"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <span>README</span>
+                    <span>↗</span>
+                </a>
+
+
+                <a
+                    class="doc-link"
+                    href="https://github.com/ekke-edu/.github/blob/main/CODE_OF_CONDUCT.md"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <span>Code of Conduct</span>
+                    <span>↗</span>
+                </a>
+
+
+                <a
+                    class="doc-link"
+                    href="https://github.com/ekke-edu/.github/blob/main/CONTRIBUTING.md"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <span>Contributing</span>
+                    <span>↗</span>
+                </a>
+
+
+                <a
+                    class="doc-link"
+                    href="https://github.com/ekke-edu/.github/blob/main/SECURITY.md"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <span>Security</span>
+                    <span>↗</span>
+                </a>
+
+
+                <a
+                    class="doc-link"
+                    href="https://github.com/ekke-edu/.github/blob/main/SUPPORT.md"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <span>Support</span>
+                    <span>↗</span>
+                </a>
+
+
+                <a
+                    class="doc-link"
+                    href="https://github.com/ekke-edu/.github"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <span>GitHub repository</span>
+                    <span>↗</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+
+<footer>
+    <div class="container footer-content">
+
+        <div>
+            <div class="footer-name">
+                Szilvási István Péter
+            </div>
+
+            <div class="footer-role">
+                külső óraadó
+            </div>
+        </div>
+
+        <div class="footer-org">
+            EKKE-EDU<br>
+            <span>Oktatási és szakmai dokumentáció</span>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
+```
