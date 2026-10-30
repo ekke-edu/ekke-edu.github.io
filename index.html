@@ -1,631 +1,339 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://uni-eszterhazy.hu/favicon.ico" type="image/x-icon">
-    <title>Szilvási István Péter | Oktatási és szakmai dokumentáció</title>
-
-    <meta name="description"
-        content="Szilvási István Péter külső óraadói oldala az oktatási és szakmai dokumentációkhoz a EKKE-EDU github szervezet kurzusaihoz.">
-
-    <style>
-        :root {
-            --ekke-blue: #003b70;
-            --ekke-blue-dark: #002b52;
-            --ekke-blue-light: #eaf2f9;
-
-            --bg-color: #f5f7fa;
-            --card-bg: #ffffff;
-
-            --text-primary: #182230;
-            --text-secondary: #5c6875;
-
-            --border-color: #dce2e8;
-
-            --shadow: 0 4px 16px rgba(0, 43, 82, 0.06);
-            --shadow-hover: 0 10px 30px rgba(0, 43, 82, 0.12);
-
-            --radius: 12px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Helvetica,
-                Arial,
-                sans-serif;
-
-            background: var(--bg-color);
-            color: var(--text-primary);
-
-            line-height: 1.6;
-        }
-
-        .container {
-            width: min(1080px, calc(100% - 40px));
-            margin: 0 auto;
-        }
-
-        /* =========================
-           HEADER
-           ========================= */
-
-        header {
-            background:
-                linear-gradient(135deg,
-                    var(--ekke-blue-dark),
-                    var(--ekke-blue));
-
-            color: white;
-            padding: 70px 0 65px;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::after {
-            content: "";
-            position: absolute;
-
-            width: 420px;
-            height: 420px;
-
-            right: -180px;
-            top: -220px;
-
-            border-radius: 50%;
-
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            text-align: center;
-        }
-
-        .header-logo {
-            display: block;
-            position: relative;
-            z-index: 1;
-            width: min(280px, 80%);
-            height: auto;
-            margin: 0 auto 28px;
-        }
-
-        .organization {
-            display: inline-block;
-
-            margin-bottom: 18px;
-
-            padding: 6px 12px;
-
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 999px;
-
-            font-size: 0.85rem;
-            font-weight: 600;
-
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-
-            color: rgba(255, 255, 255, 0.9);
-
-            text-decoration: none;
-
-            transition:
-                background-color 0.2s ease,
-                border-color 0.2s ease,
-                color 0.2s ease;
-        }
-
-        .organization:hover,
-        .organization:focus-visible {
-            background: white;
-            border-color: white;
-            color: var(--ekke-blue);
-            text-decoration: none;
-        }
-
-        h1 {
-            margin: 0 0 16px;
-
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            line-height: 1.15;
-
-            letter-spacing: -1px;
-        }
-
-        header p {
-            margin: 0;
-            margin-right: auto;
-            margin-left: auto;
-
-            max-width: 720px;
-
-            color: rgba(255, 255, 255, 0.82);
-
-            font-size: 1.1rem;
-        }
-
-        /* =========================
-           MAIN
-           ========================= */
-
-        main {
-            padding: 55px 0 70px;
-        }
-
-        .section {
-            margin-bottom: 55px;
-        }
-
-        .section-header {
-            margin-bottom: 25px;
-        }
-
-        .section-header h2 {
-            margin: 0 0 6px;
-
-            font-size: 1.55rem;
-
-            letter-spacing: -0.3px;
-        }
-
-        .section-header p {
-            margin: 0;
-
-            color: var(--text-secondary);
-        }
-
-        /* =========================
-           CARDS
-           ========================= */
-
-        .grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(300px, 1fr));
-
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-
-            padding: 25px;
-
-            box-shadow: var(--shadow);
-
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease,
-                border-color 0.2s ease;
-
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-
-            border-color: rgba(0, 59, 112, 0.25);
-
-            box-shadow: var(--shadow-hover);
-        }
-
-        .card-icon {
-            width: 42px;
-            height: 42px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 18px;
-
-            border-radius: 10px;
-
-            background: var(--ekke-blue-light);
-
-            color: var(--ekke-blue);
-
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .card-code {
-            margin: 0 0 6px;
-
-            color: var(--ekke-blue);
-
-            font-size: 0.75rem;
-            font-weight: 700;
-
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .card h3 {
-            margin: 0 0 8px;
-
-            font-size: 1.2rem;
-
-            color: var(--text-primary);
-        }
-
-        .card p {
-            margin: 0 0 22px;
-
-            color: var(--text-secondary);
-
-            font-size: 0.95rem;
-
-            flex-grow: 1;
-        }
-
-        .card a {
-            color: var(--ekke-blue);
-
-            text-decoration: none;
-
-            font-weight: 650;
-
-            display: inline-flex;
-            align-items: center;
-
-            gap: 7px;
-
-            transition: gap 0.2s ease;
-        }
-
-        .card a:hover {
-            gap: 11px;
-            text-decoration: underline;
-        }
-
-        /* =========================
-           DOCUMENTATION CARDS
-           ========================= */
-
-        .docs-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
-
-            gap: 14px;
-        }
-
-        .doc-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 17px 19px;
-
-            background: white;
-
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-
-            color: var(--text-primary);
-
-            text-decoration: none;
-
-            font-weight: 600;
-
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-
-            transition:
-                transform 0.2s ease,
-                border-color 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-        .doc-link:hover {
-            transform: translateY(-2px);
-
-            border-color: rgba(0, 59, 112, 0.3);
-
-            box-shadow: var(--shadow);
-
-            color: var(--ekke-blue);
-        }
-
-        .doc-link span:last-child {
-            color: var(--ekke-blue);
-            font-size: 1.1rem;
-        }
-
-        /* =========================
-           FOOTER
-           ========================= */
-
-        footer {
-            border-top: 1px solid var(--border-color);
-
-            background: #ffffff;
-
-            padding: 30px 0;
-
-            color: white;
-
-            font-size: 0.9rem;
-
-            background-color: #3A7F97;
-        }
-
-        .footer-content {
-            display: flex;
-
-            justify-content: center;
-            align-items: center;
-
-            gap: 20px;
-
-            min-width: 0;
-        }
-
-        .footer-name {
-            color: white;
-            font-weight: 600;
-        }
-
-        .footer-role {
-            margin-top: 3px;
-        }
-
-        .footer-org {
-            text-align: right;
-
-            min-width: 0;
-
-            overflow-wrap: anywhere;
-        }
-
-        /* =========================
-           MOBILE
-           ========================= */
-
-        @media (max-width: 650px) {
-
-            .container {
-                width: min(100% - 28px, 1080px);
-            }
-
-            header {
-                padding: 50px 0 45px;
-            }
-
-            main {
-                padding: 40px 0 50px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                align-items: flex-start;
-
-                gap: 14px;
-            }
-
-            .footer-org {
-                text-align: left;
-
-                width: 100%;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1f33">
+  <meta name="description" content="EKKE-EDU: egyetemi kurzusanyagok, nyílt fejlesztői projektek és az EKKE MCP asszisztens.">
+  <link rel="icon" href="https://uni-eszterhazy.hu/favicon.ico" type="image/x-icon">
+  <title>EKKE-EDU — Kurzusok és nyílt fejlesztői eszközök</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #102438;
+      --muted: #536578;
+      --navy: #0b1f33;
+      --navy-2: #123954;
+      --teal: #0b7285;
+      --teal-soft: #e6f4f4;
+      --lime: #c8ee74;
+      --paper: #f6f8f5;
+      --white: #fff;
+      --line: #dce5e4;
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(15, 44, 59, .08);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    a { color: inherit; }
+    button { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(11,31,51,.96); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,.1); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; color: white; }
+    .brand { display: inline-flex; align-items: center; gap: 13px; color: white; text-decoration: none; font-weight: 750; letter-spacing: .02em; }
+    .brand img { width: 118px; height: auto; }
+    .brand-mark { width: 1px; height: 28px; background: rgba(255,255,255,.32); }
+    .nav-right, .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,.78); text-decoration: none; font-size: .92rem; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--lime); }
+    .language { display: inline-flex; padding: 4px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; gap: 2px; }
+    .language button { cursor: pointer; color: rgba(255,255,255,.72); border: 0; background: transparent; border-radius: 999px; padding: 6px 9px; font-size: .75rem; font-weight: 750; }
+    .language button[aria-pressed="true"] { color: var(--navy); background: var(--lime); }
+    .hero { position: relative; overflow: hidden; color: white; background: radial-gradient(ellipse at 78% 38%, rgba(24,126,139,.42), transparent 36%), linear-gradient(120deg,var(--navy),var(--navy-2)); padding: 88px 0 94px; }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .16; background-image: linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(90deg,transparent,#000 40%,#000); }
+    .hero-inner { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--lime); text-transform: uppercase; letter-spacing: .13em; font-size: .76rem; font-weight: 800; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+    h1 { max-width: 690px; font-size: clamp(2.7rem,6vw,5rem); line-height: 1.04; letter-spacing: -.055em; margin: 22px 0 22px; }
+    .hero p { max-width: 620px; color: rgba(255,255,255,.77); font-size: 1.12rem; margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 0 19px; border-radius: 999px; text-decoration: none; font-weight: 750; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--lime); color: var(--navy); }
+    .button-primary:hover { background: #d8f49e; }
+    .button-quiet { border: 1px solid rgba(255,255,255,.28); color: white; }
+    .button-quiet:hover { background: rgba(255,255,255,.08); }
+    .flow-card { position: relative; padding: 23px; border-radius: 25px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); box-shadow: 0 26px 70px rgba(0,0,0,.22); backdrop-filter: blur(12px); }
+    .flow-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; color: rgba(255,255,255,.7); font-size: .76rem; }
+    .live { display: inline-flex; gap: 7px; align-items: center; color: var(--lime); font-size: .72rem; font-weight: 700; }
+    .live::before { content: ""; width: 7px; height: 7px; background: currentColor; border-radius: 50%; box-shadow: 0 0 12px currentColor; }
+    .flow-question { border: 1px solid rgba(255,255,255,.13); background: rgba(6,23,39,.48); border-radius: 15px; padding: 14px 16px; font-size: .93rem; }
+    .flow-arrow { height: 35px; display: grid; place-items: center; color: var(--lime); font-size: 1.15rem; }
+    .flow-results { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; }
+    .flow-results span { display: grid; place-items: center; min-height: 64px; padding: 7px; text-align: center; border: 1px solid rgba(255,255,255,.13); border-radius: 13px; background: rgba(255,255,255,.06); color: rgba(255,255,255,.85); font-size: .73rem; line-height: 1.3; }
+    .flow-caption { padding-top: 15px; color: rgba(255,255,255,.56); font-size: .75rem; }
+    .trust-row { background: white; border-bottom: 1px solid var(--line); }
+    .trust-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--muted); font-size: .88rem; }
+    .trust-inner strong { color: var(--ink); }
+    .trust-points { display: flex; gap: 22px; flex-wrap: wrap; }
+    .trust-points span::before { content: "✓"; color: var(--teal); font-weight: 900; margin-right: 8px; }
+    main { padding: 82px 0; }
+    .section { margin-bottom: 96px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 28px; }
+    .kicker { color: var(--teal); text-transform: uppercase; font-size: .74rem; font-weight: 850; letter-spacing: .14em; margin: 0 0 8px; }
+    h2 { margin: 0; font-size: clamp(1.9rem,4vw,3rem); line-height: 1.12; letter-spacing: -.045em; }
+    .section-heading p { max-width: 440px; margin: 0; color: var(--muted); }
+    .course-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+    .course { position: relative; overflow: hidden; min-height: 242px; display: flex; flex-direction: column; padding: 25px 27px; text-decoration: none; background: white; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 4px 22px rgba(15,44,59,.035); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .course:hover { transform: translateY(-4px); border-color: #9ec7c9; box-shadow: var(--shadow); }
+    .course-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .course-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--teal-soft); color: var(--teal); font-size: .9rem; font-weight: 850; }
+    .course-code { color: #728293; font: 700 .7rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .03em; }
+    .course h3 { margin: 0 0 7px; font-size: 1.24rem; letter-spacing: -.02em; }
+    .course p { margin: 0; color: var(--muted); font-size: .92rem; max-width: 520px; }
+    .course-link { margin-top: auto; padding-top: 22px; color: var(--teal); font-size: .88rem; font-weight: 780; }
+    .course-link span { display: inline-block; transition: transform .2s ease; margin-left: 5px; }
+    .course:hover .course-link span { transform: translateX(4px); }
+    .mcp-section { padding: 36px; border-radius: 30px; color: white; background: linear-gradient(135deg,#0c2940,#0d5260); box-shadow: 0 22px 65px rgba(13,66,78,.16); }
+    .mcp-heading { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 30px; }
+    .mcp-heading h2 { max-width: 680px; }
+    .mcp-heading p { color: rgba(255,255,255,.72); max-width: 690px; margin: 14px 0 0; }
+    .mcp-mark { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 20px; color: var(--navy); background: var(--lime); font-size: 1.3rem; font-weight: 900; letter-spacing: -.05em; }
+    .mcp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; }
+    .mcp-benefits { display: grid; gap: 12px; align-content: start; }
+    .benefit { display: flex; gap: 13px; padding: 14px 15px; border: 1px solid rgba(255,255,255,.12); border-radius: 15px; background: rgba(255,255,255,.055); }
+    .benefit b { color: var(--lime); font-size: .86rem; min-width: 22px; }
+    .benefit span { color: rgba(255,255,255,.82); font-size: .9rem; }
+    .code-panel { overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: #071827; }
+    .code-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.65); font: 700 .74rem ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .copy { border: 1px solid rgba(255,255,255,.2); border-radius: 8px; padding: 6px 9px; color: white; background: transparent; cursor: pointer; font: inherit; }
+    .copy:hover { border-color: var(--lime); color: var(--lime); }
+    pre { overflow-x: auto; margin: 0; padding: 18px; color: #d8e8e7; font: .78rem/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .code-note { margin: 10px 0 0; color: rgba(255,255,255,.57); font-size: .78rem; }
+    .mcp-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+    .mcp-actions .button-quiet { border-color: rgba(255,255,255,.3); }
+    .org-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; }
+    .org-link { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 18px 20px; text-decoration: none; border: 1px solid var(--line); background: white; border-radius: 15px; font-weight: 730; transition: border-color .18s ease, transform .18s ease; }
+    .org-link:hover { border-color: #8dbcc0; transform: translateY(-2px); }
+    .org-link span:last-child { color: var(--teal); }
+    footer { padding: 28px 0; color: rgba(255,255,255,.65); background: var(--navy); font-size: .84rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-inner a { color: white; text-decoration: none; }
+    .footer-inner a:hover { color: var(--lime); }
+    :focus-visible { outline: 3px solid #f0b429; outline-offset: 3px; }
+    @media (max-width: 820px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .flow-card { max-width: 560px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 12px; }
+      .mcp-grid { grid-template-columns: 1fr; }
+      .org-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 32px,1160px); }
+      .nav { min-height: 66px; }
+      .brand img { width: 94px; }
+      .nav-links { display: none; }
+      .hero { padding: 62px 0 60px; }
+      .hero-inner { gap: 30px; }
+      h1 { font-size: clamp(2.65rem,13vw,4rem); }
+      .hero p { font-size: 1rem; }
+      .trust-inner { padding: 16px 0; align-items: start; flex-direction: column; }
+      .trust-points { gap: 9px 16px; }
+      main { padding: 58px 0; }
+      .section { margin-bottom: 68px; }
+      .course-grid, .org-grid { grid-template-columns: 1fr; }
+      .course { min-height: 225px; padding: 22px; }
+      .mcp-section { padding: 24px 18px; border-radius: 23px; }
+      .mcp-heading { grid-template-columns: 1fr auto; gap: 12px; }
+      .mcp-mark { width: 48px; height: 48px; border-radius: 15px; }
+      .flow-card { padding: 17px; }
+      .flow-results { gap: 6px; }
+      .flow-results span { font-size: .67rem; }
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 8px; }
+      pre { font-size: .7rem; padding: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="topbar">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="EKKE-EDU home">
+        <img src="ekke-logo-feher.png" alt="Eszterházy Károly Katolikus Egyetem">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>EDU</span>
+      </a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#courses" data-hu="Kurzusok" data-en="Courses">Kurzusok</a>
+          <a href="#assistant" data-hu="MCP asszisztens" data-en="MCP assistant">MCP asszisztens</a>
+          <a href="#community" data-hu="Közösség" data-en="Community">Közösség</a>
+        </div>
+        <div class="language" aria-label="Language">
+          <button type="button" data-language="hu" aria-pressed="true">HU</button>
+          <button type="button" data-language="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </nav>
+  </div>
 
-    <header>
-        <a href="https://uni-eszterhazy.hu/" target="_blank" rel="noopener">
-            <img class="header-logo" src="ekke-logo-feher.png" alt="Eszterházy Károly Katolikus Egyetem">
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow" data-hu="Nyílt egyetemi tudás" data-en="Open university knowledge">Nyílt egyetemi tudás</div>
+        <h1 data-hu="Tanulás. Építés. Megosztás." data-en="Learn. Build. Share.">Tanulás. Építés. Megosztás.</h1>
+        <p data-hu="Az EKKE-EDU kurzusanyagai és nyílt fejlesztői projektjei egy helyen. Fedezd fel a tananyagokat, vagy kérdezz rájuk az új EKKE MCP asszisztenssel." data-en="Course materials and open developer projects from EKKE-EDU, gathered in one place. Explore the learning resources or ask questions with the new EKKE MCP assistant.">Az EKKE-EDU kurzusanyagai és nyílt fejlesztői projektjei egy helyen. Fedezd fel a tananyagokat, vagy kérdezz rájuk az új EKKE MCP asszisztenssel.</p>
+        <div class="actions">
+          <a class="button button-primary" href="#courses"><span data-hu="Kurzusok felfedezése" data-en="Explore courses">Kurzusok felfedezése</span><span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" href="#assistant"><span data-hu="Ismerd meg az MCP-t" data-en="Discover the MCP">Ismerd meg az MCP-t</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="flow-card" aria-label="EKKE MCP search flow">
+        <div class="flow-top"><span>EKKE MCP · SEARCH</span><span class="live" data-hu="nyílt források" data-en="public sources">nyílt források</span></div>
+        <div class="flow-question" data-hu="„Mikor van a tárgyfelvételi időszak?”" data-en="“When does course registration begin?”">„Mikor van a tárgyfelvételi időszak?”</div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-results">
+          <span data-hu="Kurzusok" data-en="Courses">Kurzusok</span>
+          <span>GitHub<br>Discussions</span>
+          <span data-hu="Hivatalos EKKE" data-en="Official EKKE">Hivatalos EKKE</span>
+        </div>
+        <div class="flow-caption" data-hu="Magyar és angol keresés · forráshivatkozásokkal" data-en="Hungarian and English search · with source links">Magyar és angol keresés · forráshivatkozásokkal</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="trust-row">
+    <div class="wrap trust-inner">
+      <strong data-hu="Nyílt anyagok, gyakorlati projektek" data-en="Open materials, practical projects">Nyílt anyagok, gyakorlati projektek</strong>
+      <div class="trust-points">
+        <span data-hu="Két nyelven kereshető" data-en="Search in two languages">Két nyelven kereshető</span>
+        <span data-hu="Nyílt forrásokra épül" data-en="Powered by public sources">Nyílt forrásokra épül</span>
+        <span data-hu="Hallgatóknak és fejlesztőknek" data-en="For students and developers">Hallgatóknak és fejlesztőknek</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="section" id="courses">
+      <div class="section-heading">
+        <div><p class="kicker" data-hu="Tanulási útvonalak" data-en="Learning paths">Tanulási útvonalak</p><h2 data-hu="Kurzusok és projektek" data-en="Courses and projects">Kurzusok és projektek</h2></div>
+        <p data-hu="Gyakorlati feladatok, dokumentációk és eszközök, amelyeket az órákon és önálló munkában is használhatsz." data-en="Practical assignments, documentation, and tools to use in class and in your own work.">Gyakorlati feladatok, dokumentációk és eszközök, amelyeket az órákon és önálló munkában is használhatsz.</p>
+      </div>
+      <div class="course-grid">
+        <a class="course" href="https://ekke-edu.github.io/advanced-databases-2/" target="_blank" rel="noopener noreferrer">
+          <div class="course-top"><span class="course-icon">DB II</span><span class="course-code">LBT_IM719G2</span></div>
+          <h3 data-hu="Adatbázisrendszerek II." data-en="Database Systems II">Adatbázisrendszerek II.</h3>
+          <p data-hu="Oracle PL/SQL gyakorlatok, adatbázis-kezelés, FastAPI-integráció és automatizált tesztelés." data-en="Oracle PL/SQL exercises, database management, FastAPI integration, and automated testing.">Oracle PL/SQL gyakorlatok, adatbázis-kezelés, FastAPI-integráció és automatizált tesztelés.</p>
+          <span class="course-link"><span data-hu="Kurzus megnyitása" data-en="Open course">Kurzus megnyitása</span><span aria-hidden="true">→</span></span>
         </a>
-        <div class="container header-content">
-            <a class="organization" href="https://github.com/ekke-edu" target="_blank" rel="noopener">
-                EKKE-EDU
-            </a>
+        <a class="course" href="https://ekke-edu.github.io/cloud-computing/" target="_blank" rel="noopener noreferrer">
+          <div class="course-top"><span class="course-icon">☁</span><span class="course-code">LBT_PI255G3</span></div>
+          <h3 data-hu="Felhőalapú számítástechnika" data-en="Cloud Computing">Felhőalapú számítástechnika</h3>
+          <p data-hu="Azure, Terraform (IaC), konténerizált fejlesztői környezetek és CI/CD automatizáció." data-en="Azure, Terraform (IaC), containerized development environments, and CI/CD automation.">Azure, Terraform (IaC), konténerizált fejlesztői környezetek és CI/CD automatizáció.</p>
+          <span class="course-link"><span data-hu="Kurzus megnyitása" data-en="Open course">Kurzus megnyitása</span><span aria-hidden="true">→</span></span>
+        </a>
+        <a class="course" href="https://ekke-edu.github.io/complex-ai-applications/" target="_blank" rel="noopener noreferrer">
+          <div class="course-top"><span class="course-icon">AI</span><span class="course-code">LBI_PI109G3</span></div>
+          <h3 data-hu="Komplex MI alkalmazások fejlesztése" data-en="Developing Complex AI Applications">Komplex MI alkalmazások fejlesztése</h3>
+          <p data-hu="FastAPI, RAG-architektúrák, MongoDB, Neo4j gráfadatok és MLOps-megfigyelhetőség." data-en="FastAPI, RAG architectures, MongoDB, Neo4j graph data, and MLOps observability.">FastAPI, RAG-architektúrák, MongoDB, Neo4j gráfadatok és MLOps-megfigyelhetőség.</p>
+          <span class="course-link"><span data-hu="Kurzus megnyitása" data-en="Open course">Kurzus megnyitása</span><span aria-hidden="true">→</span></span>
+        </a>
+        <a class="course" href="https://ekke-edu.github.io/modern-databases/" target="_blank" rel="noopener noreferrer">
+          <div class="course-top"><span class="course-icon">◈</span><span class="course-code">LBI_PI103G2</span></div>
+          <h3 data-hu="Korszerű adatbázisok" data-en="Modern Databases">Korszerű adatbázisok</h3>
+          <p data-hu="MongoDB dokumentum-orientált tárolás, aggregációs folyamatok és Neo4j Cypher gráfmodellezés." data-en="MongoDB document storage, aggregation pipelines, and graph modeling with Neo4j Cypher.">MongoDB dokumentum-orientált tárolás, aggregációs folyamatok és Neo4j Cypher gráfmodellezés.</p>
+          <span class="course-link"><span data-hu="Kurzus megnyitása" data-en="Open course">Kurzus megnyitása</span><span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
 
-            <h1>
-                Szervezeti dokumentáció<br>
-                és tudásbázis
-            </h1>
-
-            <p>
-                Az EKKE-EDU kurzusaihoz, projektjeihez és működéséhez
-                kapcsolódó dokumentációk központi gyűjteménye.
-            </p>
-
+    <section class="section mcp-section" id="assistant">
+      <div class="mcp-heading">
+        <div>
+          <p class="kicker" style="color:var(--lime)" data-hu="Újdonság · nyílt forráskód" data-en="New · open source">Újdonság · nyílt forráskód</p>
+          <h2 data-hu="Kérdezz az EKKE tudásbázisától." data-en="Ask the EKKE knowledge base.">Kérdezz az EKKE tudásbázisától.</h2>
+          <p data-hu="Az ekke-mcp egy MCP-szerver, amely kurzusanyagokban, GitHub Discussionökben és az egyetem nyilvános oldalain keres. Magyarul és angolul is kérdezhetsz; a válaszok forráslinkeket adnak." data-en="ekke-mcp is an MCP server that searches course materials, GitHub Discussions, and public university pages. Ask in Hungarian or English and get links back to the sources.">Az ekke-mcp egy MCP-szerver, amely kurzusanyagokban, GitHub Discussionökben és az egyetem nyilvános oldalain keres. Magyarul és angolul is kérdezhetsz; a válaszok forráslinkeket adnak.</p>
         </div>
-    </header>
-
-
-    <main>
-        <div class="container">
-            <section class="section">
-                <div class="section-header">
-                    <h2>Kurzusok és szakmai dokumentációk</h2>
-                    <p>
-                        A kurzusokhoz kapcsolódó fejlesztési,
-                        technológiai és oktatási dokumentációk.
-                    </p>
-                </div>
-                <div class="grid">
-                    <article class="card">
-                        <div class="card-icon">
-                            DB
-                        </div>
-                        <div class="card-code">LBT_IM719G2</div>
-                        <h3>
-                            Adatbázisrendszerek II.
-                        </h3>
-                        <p>
-                            Oracle PL/SQL gyakorlatok,
-                            Kanto régió adatbázis-kezelése,
-                            FastAPI integráció és automatizált tesztek.
-                        </p>
-                        <a href="https://ekke-edu.github.io/advanced-databases-2/" target="_blank" rel="noopener">
-                            Dokumentáció megnyitása
-                            <span>→</span>
-                        </a>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon">
-                            ☁
-                        </div>
-                        <div class="card-code">LBT_PI255G3</div>
-                        <h3>
-                            Felhőalapú számítástechnika
-                        </h3>
-                        <p>
-                            Azure portál, Terraform (IaC),
-                            konténerizált fejlesztői környezetek
-                            és CI/CD automatizáció alapjai.
-                        </p>
-                        <a href="https://ekke-edu.github.io/cloud-computing/" target="_blank" rel="noopener">
-                            Dokumentáció megnyitása
-                            <span>→</span>
-                        </a>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon">
-                            AI
-                        </div>
-                        <div class="card-code">LBI_PI109G3</div>
-                        <h3>
-                            Komplex MI alkalmazások fejlesztése
-                        </h3>
-                        <p>
-                            FastAPI, RAG architekturális minták,
-                            MongoDB, Neo4j gráfalapú adatok
-                            és MLOps megfigyelhetőség.
-                        </p>
-                        <a href="https://ekke-edu.github.io/complex-ai-applications/" target="_blank" rel="noopener">
-                            Dokumentáció megnyitása
-                            <span>→</span>
-                        </a>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon">
-                            ◈
-                        </div>
-                        <div class="card-code">LBI_PI103G2</div>
-                        <h3>
-                            Korszerű adatbázisok
-                        </h3>
-                        <p>
-                            MongoDB dokumentum-orientált tárolás,
-                            aggregációs folyamatok és Neo4j
-                            Cypher alapú gráfmodellezés.
-                        </p>
-
-                        <a href="https://ekke-edu.github.io/modern-databases/" target="_blank" rel="noopener">
-                            Dokumentáció megnyitása
-                            <span>→</span>
-                        </a>
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <!-- =========================
-             SZERVEZETI DOKUMENTUMOK
-             ========================= -->
-
-            <section class="section">
-
-                <div class="section-header">
-                    <h2>Szervezeti dokumentumok</h2>
-
-                    <p>
-                        Az EKKE-EDU GitHub szervezet működéséhez
-                        és együttműködéséhez kapcsolódó irányelvek.
-                    </p>
-                </div>
-
-
-                <div class="docs-grid">
-
-                    <a class="doc-link" href="https://github.com/ekke-edu/.github/blob/main/README.md" target="_blank"
-                        rel="noopener">
-                        <span>README</span>
-                        <span>↗</span>
-                    </a>
-
-
-                    <a class="doc-link" href="https://github.com/ekke-edu/.github/blob/main/CODE_OF_CONDUCT.md"
-                        target="_blank" rel="noopener">
-                        <span>Code of Conduct</span>
-                        <span>↗</span>
-                    </a>
-
-
-                    <a class="doc-link" href="https://github.com/ekke-edu/.github/blob/main/CONTRIBUTING.md"
-                        target="_blank" rel="noopener">
-                        <span>Contributing</span>
-                        <span>↗</span>
-                    </a>
-
-
-                    <a class="doc-link" href="https://github.com/ekke-edu/.github/blob/main/SECURITY.md" target="_blank"
-                        rel="noopener">
-                        <span>Security</span>
-                        <span>↗</span>
-                    </a>
-
-
-                    <a class="doc-link" href="https://github.com/orgs/ekke-edu/discussions/new?category=q-a"
-                        target="_blank" rel="noopener">
-                        <span>Support</span>
-                        <span>↗</span>
-                    </a>
-
-
-                    <a class="doc-link" href="https://github.com/ekke-edu/.github" target="_blank" rel="noopener">
-                        <span>GitHub repository</span>
-                        <span>↗</span>
-                    </a>
-
-                </div>
-
-            </section>
-
+        <div class="mcp-mark" aria-hidden="true">MCP</div>
+      </div>
+      <div class="mcp-grid">
+        <div class="mcp-benefits">
+          <div class="benefit"><b>01</b><span data-hu="Kurzusrepo-k, publikus issue-k és szervezeti Discussionök keresése." data-en="Search course repositories, public issues, and organization Discussions.">Kurzusrepo-k, publikus issue-k és szervezeti Discussionök keresése.</span></div>
+          <div class="benefit"><b>02</b><span data-hu="Hivatalos EKKE-oldalak keresése tanulmányi információkhoz." data-en="Search official EKKE pages for academic information.">Hivatalos EKKE-oldalak keresése tanulmányi információkhoz.</span></div>
+          <div class="benefit"><b>03</b><span data-hu="Magyar és angol keresőkifejezések automatikus bővítése." data-en="Automatic query expansion between Hungarian and English.">Magyar és angol keresőkifejezések automatikus bővítése.</span></div>
+          <div class="benefit"><b>04</b><span data-hu="Csak nyilvános forrásokat olvas; nem fér hozzá Neptunhoz vagy hallgatói adatokhoz." data-en="Reads public sources only; it has no access to Neptun or student records.">Csak nyilvános forrásokat olvas; nem fér hozzá Neptunhoz vagy hallgatói adatokhoz.</span></div>
         </div>
-    </main>
-
-
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-name">
-                Szilvási István Péter <span class="footer-role">| Külsős oktató, Matematikai és Informatikai
-                    Intézet</span>
-            </div>
+        <div>
+          <div class="code-panel">
+            <div class="code-head"><span>mcp.json</span><button class="copy" type="button" data-hu="Másolás" data-en="Copy" aria-label="Copy configuration">Másolás</button></div>
+            <pre><code id="mcp-config">{
+  "mcpServers": {
+    "ekke-university-assistant": {
+      "command": "npx",
+      "args": ["-y", "ekke-mcp"],
+      "env": {
+        "GITHUB_TOKEN": "YOUR_READ_ONLY_TOKEN"
+      }
+    }
+  }
+}</code></pre>
+          </div>
+          <p class="code-note" data-hu="A GitHub-token a Discussionök kereséséhez kell. Token nélkül is működik a keresés a kurzusanyagokban és a hivatalos oldalakon." data-en="A GitHub token is needed for Discussion search. Course materials and official pages remain searchable without it.">A GitHub-token a Discussionök kereséséhez kell. Token nélkül is működik a keresés a kurzusanyagokban és a hivatalos oldalakon.</p>
         </div>
-    </footer>
+      </div>
+      <div class="mcp-actions">
+        <a class="button button-primary" href="https://www.npmjs.com/package/ekke-mcp" target="_blank" rel="noopener noreferrer"><span data-hu="Csomag az npm-en" data-en="Package on npm">Csomag az npm-en</span><span aria-hidden="true">↗</span></a>
+        <a class="button button-quiet" href="https://github.com/ekke-edu/mcp" target="_blank" rel="noopener noreferrer"><span data-hu="Forráskód és útmutató" data-en="Source and docs">Forráskód és útmutató</span><span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
 
+    <section class="section" id="community">
+      <div class="section-heading">
+        <div><p class="kicker" data-hu="Nyílt együttműködés" data-en="Open collaboration">Nyílt együttműködés</p><h2 data-hu="Csatlakozz a közösséghez" data-en="Join the community">Csatlakozz a közösséghez</h2></div>
+        <p data-hu="Kövesd a fejlesztést, tegyél fel kérdést vagy segíts jobbá tenni az anyagokat." data-en="Follow the work, ask a question, or help improve the materials.">Kövesd a fejlesztést, tegyél fel kérdést vagy segíts jobbá tenni az anyagokat.</p>
+      </div>
+      <div class="org-grid">
+        <a class="org-link" href="https://github.com/ekke-edu" target="_blank" rel="noopener noreferrer"><span data-hu="EKKE-EDU szervezet" data-en="EKKE-EDU organization">EKKE-EDU szervezet</span><span>↗</span></a>
+        <a class="org-link" href="https://github.com/orgs/ekke-edu/discussions" target="_blank" rel="noopener noreferrer"><span data-hu="Kérdések és válaszok" data-en="Questions and answers">Kérdések és válaszok</span><span>↗</span></a>
+        <a class="org-link" href="https://github.com/ekke-edu/.github/blob/main/README.md" target="_blank" rel="noopener noreferrer"><span>README</span><span>↗</span></a>
+        <a class="org-link" href="https://github.com/ekke-edu/.github/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer"><span>Code of Conduct</span><span>↗</span></a>
+        <a class="org-link" href="https://github.com/ekke-edu/.github/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer"><span data-hu="Közreműködési útmutató" data-en="Contributing guide">Közreműködési útmutató</span><span>↗</span></a>
+        <a class="org-link" href="https://github.com/ekke-edu/.github/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer"><span>Security</span><span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>EKKE-EDU · <span data-hu="Nyílt tudás és fejlesztés" data-en="Open knowledge and development">Nyílt tudás és fejlesztés</span></span>
+      <a href="https://github.com/ekke-edu" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
+  </footer>
+
+  <script>
+    const languageButtons = document.querySelectorAll("[data-language]");
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+      document.querySelectorAll("[data-hu][data-en]").forEach((element) => {
+        element.textContent = element.dataset[language];
+      });
+      languageButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.language === language));
+      });
+      try { localStorage.setItem("ekke-language", language); } catch {}
+    }
+    languageButtons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.language)));
+    let preferredLanguage = "hu";
+    try { preferredLanguage = localStorage.getItem("ekke-language") || "hu"; } catch {}
+    setLanguage(preferredLanguage);
+
+    const copyButton = document.querySelector(".copy");
+    copyButton.addEventListener("click", async () => {
+      const original = copyButton.textContent;
+      try {
+        await navigator.clipboard.writeText(document.querySelector("#mcp-config").textContent);
+        copyButton.textContent = document.documentElement.lang === "hu" ? "Kimásolva ✓" : "Copied ✓";
+      } catch {
+        copyButton.textContent = document.documentElement.lang === "hu" ? "Jelöld ki és másold" : "Select and copy";
+      }
+      window.setTimeout(() => {
+        copyButton.textContent = document.documentElement.lang === "hu" ? "Másolás" : "Copy";
+      }, 1800);
+    });
+  </script>
 </body>
-
 </html>
