@@ -339,9 +339,6 @@
     chatDialog.addEventListener("click", (event) => {
       if (event.target === chatDialog) chatDialog.close();
     });
-    document.querySelector(".chat-close").addEventListener("click", () => {
-      document.querySelector(".chat-close").setAttribute("aria-label", document.documentElement.lang === "hu" ? "Chat bezárása" : "Close chat");
-    });
   </script>
 
   <footer>
@@ -360,6 +357,9 @@
       });
       languageButtons.forEach((button) => {
         button.setAttribute("aria-pressed", String(button.dataset.language === language));
+      });
+      document.querySelectorAll("[data-hu-aria-label][data-en-aria-label]").forEach((element) => {
+        element.setAttribute("aria-label", element.dataset[language === "hu" ? "huAriaLabel" : "enAriaLabel"]);
       });
       try { localStorage.setItem("ekke-language", language); } catch {}
     }
