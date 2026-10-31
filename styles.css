@@ -79,6 +79,7 @@
     .mcp-section { padding: 36px; border-radius: 30px; color: white; background: linear-gradient(135deg,#0c2940,#0d5260); box-shadow: 0 22px 65px rgba(13,66,78,.16); }
     .mcp-heading { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 30px; }
     .mcp-heading h2 { max-width: 680px; }
+    .kicker-on-dark { color: var(--lime); }
     .mcp-heading p { color: rgba(255,255,255,.72); max-width: 690px; margin: 14px 0 0; }
     .mcp-mark { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 20px; color: var(--navy); background: var(--lime); font-size: 1.3rem; font-weight: 900; letter-spacing: -.05em; }
     .mcp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; }
@@ -123,9 +124,9 @@
       .mcp-grid { grid-template-columns: 1fr; }
       .org-grid { grid-template-columns: repeat(2,1fr); }
     }
+    @media (max-width: 600px) {
       .chat-launcher { right: 14px; bottom: 14px; min-height: 50px; padding: 0 15px; }
       .chat-dialog { inset: 0; width: 100vw; height: 100dvh; border: 0; border-radius: 0; }
-    @media (max-width: 600px) {
       .wrap { width: min(100% - 32px,1160px); }
       .nav { min-height: 66px; }
       .brand img { width: 94px; }
