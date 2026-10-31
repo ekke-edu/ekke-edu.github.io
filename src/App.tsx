@@ -51,7 +51,7 @@ export default function App() {
       <div className="topbar">
         <nav className="wrap nav" aria-label={language === "hu" ? "Fő navigáció" : "Main navigation"}>
           <a className="brand" href="#" aria-label="EKKE-EDU home">
-            <img src="/ekke-logo-feher.png" alt="Eszterházy Károly Katolikus Egyetem" />
+            <img src="https://ekke-edu.github.io/ekke-logo-feher.png" alt="Eszterházy Károly Katolikus Egyetem" />
             <span className="brand-mark" aria-hidden="true" />
             <span>EDU</span>
           </a>
