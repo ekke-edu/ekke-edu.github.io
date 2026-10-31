@@ -4,6 +4,7 @@ import test from "node:test";
 
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const app = await readFile(new URL("../app.js", import.meta.url), "utf8");
+const styles = await readFile(new URL("../styles.css", import.meta.url), "utf8");
 
 test("homepage loads external styles and a deferred application script", () => {
   assert.match(html, /<link rel="stylesheet" href="styles\.css">/);
@@ -38,4 +39,15 @@ test("language switching updates document language, text and accessible labels",
   assert.match(app, /document\.documentElement\.lang = language/);
   assert.match(app, /data-hu-aria-label/);
   assert.match(app, /localStorage\.setItem\("ekke-language", language\)/);
+});
+
+test("mobile chat sizing is limited to the small-screen breakpoint", () => {
+  const mobileRules = styles.match(/@media \(max-width: 600px\) \{([\s\S]*?)\n    \}/)?.[1] ?? "";
+  assert.match(mobileRules, /\.chat-dialog \{ inset: 0/);
+  assert.doesNotMatch(styles.slice(0, styles.indexOf("@media (max-width: 600px)")), /\.chat-dialog \{ inset: 0/);
+});
+
+test("the homepage keeps presentation styling in the stylesheet", () => {
+  assert.doesNotMatch(html, /\sstyle="/i);
+  assert.match(html, /class="kicker kicker-on-dark"/);
 });
