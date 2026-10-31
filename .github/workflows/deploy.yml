@@ -2,43 +2,46 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - "index.html"
-
+      - "package.json"
+      - "vite.config.ts"
+      - "tsconfig*.json"
+      - "src/**"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
   deploy:
-    name: Deploy static site
+    name: Build and deploy homepage
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          path: "."
-
+          node-version: 24
+      - uses: actions/configure-pages@v5
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
