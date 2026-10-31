@@ -1,58 +1,22 @@
-# EKKE-EDU
+# EKKE-EDU homepage
 
-**Organization-level documentation and GitHub configuration for EKKE-EDU.**
+The organization homepage is a bilingual React and TypeScript application built with Vite. Course cards and translations live in `src/content.ts`; interactive sections are composed in `src/App.tsx` and `src/components`.
 
----
+## Local development
 
-## 🇭🇺 Magyar
+```sh
+npm install
+npm run dev
+```
 
-Ez a repository az **EKKE-EDU GitHub szervezet** szervezeti szintű dokumentumait és GitHub-konfigurációs fájljait tartalmazza.
+Run the checks and production build:
 
-A repository statikus, nem tartalmaz alkalmazáskódot vagy futtatandó szolgáltatást.
+```sh
+npm test
+npm run build
+npm run preview
+```
 
-### Tartalom
+The static production bundle is written to `dist/`. GitHub Actions builds and deploys that directory to GitHub Pages when changes reach `main`.
 
-- Code of Conduct
-- Contributing Guidelines
-- Security Policy
-- Support
-- további szervezeti dokumentációk és konfigurációs fájlok
-
-Ezeket a dokumentumokat a GitHub az organization repositoryihoz kapcsolódó közösségi és működési irányelvek részeként is felhasználhatja.
-
-### EKKE-EDU dokumentációs oldal
-
-A kurzusok és szakmai dokumentációk központi oldala:
-
-https://ekke-edu.github.io/
-
----
-
-## 🇬🇧 English
-
-This repository contains **organization-level documentation and GitHub configuration files** for the **EKKE-EDU GitHub organization**.
-
-It is a static repository and does not contain application source code or executable services.
-
-### Contents
-
-- Code of Conduct
-- Contributing Guidelines
-- Security Policy
-- Support
-- additional organization documentation and configuration files
-
-These documents may be used by GitHub as organization-wide community health and operational guidelines for repositories within the organization.
-
-### EKKE-EDU documentation site
-
-The central website for courses and technical documentation:
-
-https://ekke-edu.github.io/
-
----
-
-## Maintainer
-
-**Szilvási István Péter**  
-External Lecturer
+The embedded EKKE assistant uses the public chat service. MCP configuration is displayed on the site so students and developers can connect their own MCP-compatible client.
