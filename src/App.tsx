@@ -157,7 +157,7 @@ export default function App() {
             </div>
           </div>
           <div className="mcp-actions">
-            <button className="button button-primary" type="button" onClick={() => setChatOpen(true)}>{copy.chatButton} ✦</button>
+            <button className="button button-primary" type="button" onClick={() => setChatOpen(true)}>{copy.chatButton} <span aria-hidden="true">✦</span></button>
             <a className="button button-primary" href="https://www.npmjs.com/package/ekke-mcp" target="_blank" rel="noopener noreferrer">{language === "hu" ? "Csomag az npm-en" : "Package on npm"} ↗</a>
             <a className="button button-quiet" href="https://github.com/ekke-edu/mcp" target="_blank" rel="noopener noreferrer">{language === "hu" ? "Forráskód és útmutató" : "Source and docs"} ↗</a>
           </div>
